@@ -1,0 +1,11 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/target/
+
+### IntelliJ IDEA ###
+# other files
+.allure
+allure-results
+build
+.idea
+target
