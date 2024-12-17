@@ -1,6 +1,8 @@
 package in.reqres;
 
 
+import data.People;
+import data.PeopleCreated;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -50,5 +52,20 @@ public class APITests {
         Assert.assertEquals(jsonResponse.get("job"),requestData.get("job"),
                 "Ожидали создание пользователя с именем " + requestData.get("job") +
                         ", создался с именем " + jsonResponse.get("job"));
+    }
+    @Test
+    public void apiTest(){
+        People people = new People("Anton","enginer");
+        PeopleCreated peopleCreated = given()
+                .contentType("application/json")
+                .body(people)
+                .when()
+                .post("https://reqres.in/api/users")
+                .then()
+                .log().body()
+                .statusCode(201)
+                .extract().body().as(PeopleCreated.class);
+        System.out.println("-----------------------------");
+        System.out.println(peopleCreated.getCreatedAt());
     }
 }

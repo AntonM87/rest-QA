@@ -1,13 +1,18 @@
 package data;
 
 public class People {
-    private String name;
-    private String job;
+    protected String name;
+    protected String job;
 
     public People(String name, String job) {
         this.name = name;
         this.job = job;
     }
+
+    public People() {
+
+    }
+
     public String getName() {
         return name;
     }
